@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<style>
+#view{
+border-style:solid;
+width:49%;
+overflow: auto;
+float:left;
+}
+#code{
+width:49%;
+}
+</style>
+<script>
+document.execCommand("DefaultParagraphSeparator", false, "p");
+addEventListener('load', function() {
+preview();
+});
+document.addEventListener('keyup', function() {
+preview();
+});
+function preview(){
+var obj = document.activeElement;
+var view = document.getElementById('view');
+var code = document.getElementById("code");
+document.getElementById("view").style.height = window.innerHeight-50 +"px";
+document.getElementById("code").style.height = window.innerHeight-50 +"px";
+if(obj.id=="view"){
+code.value=view.innerHTML;
+}else{
+view.innerHTML = code.value;
+}
+}
+</script>
+</head>
+<body>
+<div id="view" contenteditable="true"></div>
+<textarea id="code">
+<h1>編集できるHTML</h1>
+<p>この文字列は編集することができます。</p>
+<p style="color:red">リアルタイムでプレビューが表示されます。</p>
+<p>HTMLタグの練習にでもどうぞ</p>
+</textarea>
+</body>
+</html>
