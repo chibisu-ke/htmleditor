@@ -1,48 +1,66 @@
 <!doctype html>
 <html>
+
 <head>
-  <title>htmlビューアー</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-#view{
-width:45%;
-overflow: auto;
-float:left;
-}
-#code{
-width:45%;
-}
-</style>
-<script>
-document.execCommand("DefaultParagraphSeparator", false, "p");
-addEventListener('load', function() {
-preview();
-});
-document.addEventListener('keyup', function() {
-preview();
-});
-function preview(){
-var obj = document.activeElement;
-var view = document.getElementById('view');
-var code = document.getElementById("code");
-document.getElementById("view").style.height = window.innerHeight-50 +"px";
-document.getElementById("code").style.height = window.innerHeight-50 +"px";
-if(obj.id=="view"){
-code.value=view.innerHTML;
-}else{
-view.innerHTML = code.value;
-}
-}
-</script>
+    <title>htmlビューアー</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #view {
+            width: 45%;
+            overflow: auto;
+            float: left;
+        }
+
+        #code {
+            width: 45%;
+        }
+    </style>
+    <script>
+        document.execCommand("DefaultParagraphSeparator", false, "p");
+        addEventListener('load', function () {
+            preview();
+        });
+        document.addEventListener('keyup', function () {
+            preview();
+        });
+        document.addEventListener('paste', function () {
+            window.setTimeout(preview, 0);
+        });
+        function preview() {
+            var obj = document.activeElement;
+            var view = document.getElementById('view');
+            var code = document.getElementById("code");
+            document.getElementById("view").style.height = window.innerHeight - 50 + "px";
+            document.getElementById("code").style.height = window.innerHeight - 50 + "px";
+            if (obj.id == "view") {
+                code.value = view.innerHTML;
+            } else {
+                view.innerHTML = code.value;
+            }
+        }
+    </script>
 </head>
+
 <body>
-<div id="view" contenteditable="true"></div>
-<textarea id="code">
-<h1>編集できるHTML</h1>
-<p>この文字列は編集することができます。</p>
-<p style="color:red;">リアルタイムでプレビューが表示されます。</p>
-<p>HTMLタグの練習にでもどうぞ</p>
-  <input type="button" name="btn1" value="押してね" onclick="alert('ボタンが押されました')">
+    <div id="view" contenteditable="true"></div>
+    <textarea id="code">
+<h3 style="color:navy;font-size:30px;">HTMLリアルタイムプレビュー</h3>
+
+<p>画面の左側にプレビュー、右側にHTMLが表示されています。</p>
+
+<p>左側のプレビュー画面で内容を編集すると、右側のHTMLコードが書き換えられます。</p>
+
+<p><span style="color:purple;font-weight:bold;">HTML</span>だけでなく、<span style="color:orange;font-weight:bold;">CSS</span>や<span style="color:blue;font-weight:bold;">JavaScript</span>もリアルタイムで表示や動作を確認できます。</p>
+
+<p style="color:#9966CC;font-weight:bold;">HTMLを書き換えて遊んでみてください。</p>
+
+<p>保存機能はありませんので、リロードすると内容は消えてしまいます。</p>
+
+<p>左側のプレビュー画面にエクセルやワードをコピーして貼り付けるとブラウザの機能でHTMLに自動的に変換されるはずです。動作はブラウザによって異なります。</p>
+
+<input type="button" value="テスト用のボタンだよ" onclick="alert('ボタンが押されたよ')">
+
 </textarea>
 </body>
+
 </html>
