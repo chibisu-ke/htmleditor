@@ -1,18 +1,23 @@
-<!doctype html>
-<html>
+
+<!Doctype html>
+<html lang="ja">
 
 <head>
     <title>htmlビューアー</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         #view {
-            width: 45%;
+            width: 45vw;
             overflow: auto;
             float: left;
+            border: 1px solid #999;
         }
 
         #code {
-            width: 45%;
+            float: right;
+            width: 45vw;
+            resize: none;
         }
     </style>
     <script>
@@ -44,7 +49,7 @@
 <body>
     <div id="view" contenteditable="true"></div>
     <textarea id="code">
-<h3 style="color:navy;font-size:30px;">HTMLリアルタイムプレビュー</h3>
+<h3>HTMLリアルタイムプレビュー</h3>
 
 <p>画面の左側にプレビュー、右側にHTMLが表示されています。</p>
 
@@ -52,9 +57,15 @@
 
 <p>HTMLを書き換えて遊んでみてください。</p>
 
-<input type="button" value="テスト用のボタンだよ" onclick="alert('ボタンが押されたよ')"><br>
+<input type="button" value="テスト用のボタン" onclick="alert('ボタンが押された')">
 
+<style>
+    h3{
+        color:blue;
+    }
+</style>
 </textarea>
+
 </body>
 
 </html>
